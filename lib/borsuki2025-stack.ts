@@ -30,7 +30,6 @@ export class Borsuki2025Stack extends Stack {
     const siteBucket = new Bucket(this, 'SiteBucket', {
       bucketName: `borsuki-bucket-${props?.env?.account}-${props?.env?.region}`,
       enforceSSL: true,
-      minimumTLSVersion: 1.2,
       removalPolicy: RemovalPolicy.DESTROY, // Remove the bucket when the stack is destroyed (useful for testing)
       autoDeleteObjects: true, // Automatically delete all objects (useful for testing)
     });
@@ -41,7 +40,8 @@ export class Borsuki2025Stack extends Stack {
         origin: S3BucketOrigin.withOriginAccessControl(siteBucket),
       },
       domainNames: [hostedZone.zoneName],
-      certificate,
+      certificate: certificate,
+      defaultRootObject: 'index.html',
     });
 
     new ARecord(this, 'CloudfrontAliasRecord', {
