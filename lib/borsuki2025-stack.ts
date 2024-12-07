@@ -2,11 +2,12 @@ import { Stack, StackProps, RemovalPolicy, CfnOutput } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { Bucket } from 'aws-cdk-lib/aws-s3';
 import { BucketDeployment, Source } from 'aws-cdk-lib/aws-s3-deployment';
-import { Distribution } from 'aws-cdk-lib/aws-cloudfront';
+import { Distribution, ViewerProtocolPolicy } from 'aws-cdk-lib/aws-cloudfront';
 import { HostedZone, ARecord, RecordTarget } from 'aws-cdk-lib/aws-route53';
 import { CloudFrontTarget } from 'aws-cdk-lib/aws-route53-targets';
 import { Certificate, CertificateValidation } from 'aws-cdk-lib/aws-certificatemanager';
 import { S3BucketOrigin } from 'aws-cdk-lib/aws-cloudfront-origins';
+import { HttpsRedirect } from 'aws-cdk-lib/aws-route53-patterns';
 
 export class Borsuki2025Stack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -38,6 +39,7 @@ export class Borsuki2025Stack extends Stack {
     const cloudfrontDistribution = new Distribution(this, 'SiteDistribution', {
       defaultBehavior: {
         origin: S3BucketOrigin.withOriginAccessControl(siteBucket),
+        viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
       },
       domainNames: [hostedZone.zoneName],
       certificate: certificate,
