@@ -18,10 +18,14 @@ export class Borsuki2025Stack extends Stack {
       domainName: 'borsuki2025.com',
     });
 
-    // Create an ACM certificate for the domain
+    const wwwSubdomain = `www.${hostedZone.zoneName}`;
+
     const certificate = new Certificate(this, 'SiteCertificate', {
       domainName: hostedZone.zoneName,
-      validation: CertificateValidation.fromDns(hostedZone), // Automatically validates via Route 53
+      subjectAlternativeNames: [
+        wwwSubdomain,
+      ],
+      validation: CertificateValidation.fromDns(hostedZone),
     });
 
     if (props?.env === undefined) {
@@ -41,13 +45,21 @@ export class Borsuki2025Stack extends Stack {
         origin: S3BucketOrigin.withOriginAccessControl(siteBucket),
         viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
       },
-      domainNames: [hostedZone.zoneName],
+      domainNames: [hostedZone.zoneName, wwwSubdomain],
       certificate: certificate,
       defaultRootObject: 'index.html',
     });
 
+    // borsuki2025.com
     new ARecord(this, 'CloudfrontAliasRecord', {
       zone: hostedZone,
+      target: RecordTarget.fromAlias(new CloudFrontTarget(cloudfrontDistribution)),
+    });
+
+    // www.borsuki2025.com
+    new ARecord(this, 'wwwSubdomainAliasRecord', {
+      zone: hostedZone,
+      recordName: wwwSubdomain,
       target: RecordTarget.fromAlias(new CloudFrontTarget(cloudfrontDistribution)),
     });
 
