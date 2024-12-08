@@ -4,10 +4,105 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/webp" href="/favicon.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- <script async src="script.js"></script> -->
   <title>Tosia & Tytus 2025</title>
 </head>
 <body>
-  <h1>Borsuk</h1>
-  <p> To be continued. </p>
+  <div class="container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <img class="picture" src="/borsuki.jpg" alt="Two Badgers in wedding outfits" />
+      <nav>
+        <ul>
+          <li><a href="#overview">Start</a></li>
+          <li><a href="#plan">Plan dnia</a></li>
+          <li><a href="#transportation">Transport</a></li>
+          <li><a href="#gifts">Prezenty</a></li>
+          <li><a href="#food">Jedzenie</a></li>
+          <li><a href="#accommodation">Spanie</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <!-- Mobile Sidebar Toggle Button -->
+    <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+
+    <!-- Main Content -->
+    <main>
+      <section id="overview" class="section">
+        <h1>Start</h1>
+        <p>Cześć! Obiecujemy niedługo dodać tutaj więcej informacji. </p>
+      </section>
+
+      <section id="plan" class="section">
+        <h1>Plan dnia</h1>
+        <p>TBD</p>
+      </section>
+
+      <section id="transportation" class="section">
+        <h1>Transport</h1>
+        <p> TBD. </p>
+      </section>
+
+      <section id="gifts" class="section">
+        <h1>Prezenty</h1>
+        <p>TBD</p>
+      </section>
+
+      <section id="food" class="section">
+        <h1>Jedzenie</h1>
+        <p> TBD</p>
+      </section>
+
+      <section id="accommodation" class="section">
+        <h1>Spanie</h1>
+        <p>TBD</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sidebar = document.querySelector('.sidebar');
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelectorAll('.sidebar nav ul li a'); // Select all nav links
+  
+      // Toggle sidebar on button click
+      menuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+      });
+  
+      // Close sidebar when a link is clicked (on mobile)
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 768) { // Only apply on mobile
+            sidebar.classList.remove('open');
+          }
+        });
+      });
+  
+      // Handle swipe gestures for showing/hiding the sidebar
+      let touchStartX = 0;
+  
+      document.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+      });
+  
+      document.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].clientX;
+        const swipeDistance = touchEndX - touchStartX;
+  
+        // Swipe right to open sidebar (if closed)
+        if (swipeDistance > 50 && !sidebar.classList.contains('open')) {
+          sidebar.classList.add('open');
+        }
+        // Swipe left to close sidebar (if open)
+        if (swipeDistance < -50 && sidebar.classList.contains('open')) {
+          sidebar.classList.remove('open');
+        }
+      });
+    });
+  </script>
 </body>
 </html>

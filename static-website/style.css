@@ -1,0 +1,159 @@
+@font-face {
+    font-family: 'Oliver';
+    src: url('/Oliver-Regular.ttf') format('truetype');
+}
+
+/* Base Styles (Desktop Default) */
+body {
+    margin: 0;
+    font-family: 'Urbanist', sans-serif;
+    background-color: #F4F5E7; /* Background color */
+    color: #5A596A;
+}
+  
+.container {
+    display: flex;
+    height: 100vh;
+}
+  
+/* Sidebar Styles (Desktop Default) */
+.sidebar {
+    background-color: #BCC79C; /* Sidebar background */
+    color: #5A596A;
+    width: 250px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+  
+.picture {
+    background-color: #F8DE8F; /* Placeholder for the picture */
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+  
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+  
+.sidebar nav ul li {
+    margin: 10px 0;
+}
+  
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: #5A596A;
+    font-weight: bold;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #F4F5E7; /* Link background */
+    transition: background-color 0.3s, color 0.3s;
+}
+  
+.sidebar nav ul li a:hover {
+    background-color: #EB6573; /* Hover color */
+    color: #FFFFFF;
+}
+  
+/* Main Content Styles */
+main {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+  
+.section {
+    padding: 40px 20px;
+    border-bottom: 2px solid #BCC79C; /* Separator line color */
+}
+  
+section:last-of-type {
+    border-bottom: none; /* No border for the last section */
+}
+  
+section h1 {
+    color: #EB6573; /* Section header color */
+    font-family: 'Oliver', sans-serif;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+  
+section p, section ul {
+    font-size: 1em;
+    line-height: 1.6;
+}
+  
+section ul {
+    list-style-type: disc;
+    margin: 10px 0 0 20px;
+}
+  
+ul li {
+    margin-bottom: 5px;
+}
+
+/* Hide Toggle Button on Desktop */
+.menu-toggle {
+    display: none; /* Hidden by default */
+}
+  
+
+/* Sidebar Styles for Mobile */
+@media screen and (max-width: 768px) {
+    .container {
+      position: relative;
+      overflow: hidden; /* Prevent scrolling while sidebar is open */
+    }
+  
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -100%; /* Hide sidebar initially */
+      width: 250px;
+      height: 100%;
+      background-color: #BCC79C;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      transition: left 0.3s ease; /* Smooth slide-in/out animation */
+      z-index: 1000;
+    }
+  
+    .sidebar.open {
+      left: 0; /* Show sidebar when open */
+    }
+  
+    .menu-toggle {
+      display: block; /* Show only on mobile */
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background-color: #EB6573;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      font-size: 1.2em;
+      z-index: 1100;
+      cursor: pointer;
+    }
+  
+    .menu-toggle:focus {
+      outline: none;
+    }
+  
+    main {
+      margin-left: 0; /* Ensure main content doesn't shift */
+      padding: 20px;
+    }
+  }
+  
