@@ -18,10 +18,12 @@
         <ul>
           <li><a href="#overview">Start</a></li>
           <li><a href="#plan">Plan dnia</a></li>
-          <li><a href="#transportation">Transport</a></li>
+          <li><a href="#transportation">Adres & Transport</a></li>
           <li><a href="#gifts">Prezenty</a></li>
           <li><a href="#food">Jedzenie</a></li>
+          <li><a href="#dress">Dress Code</a></li>
           <li><a href="#accommodation">Spanie</a></li>
+          <li><a href="#rsvp">RSVP & Ankieta</a></li>
         </ul>
       </nav>
     </aside>
@@ -32,32 +34,116 @@
     <main>
       <section id="overview" class="section">
         <h1>Start</h1>
-        <p>Cześć! Obiecujemy niedługo dodać tutaj więcej informacji. </p>
+        
+        <p>
+        Zapraszamy Was serdecznie na nasz ślub, który odbędzie się w sobotę, 7 czerwca 2025 r. w Stodole Boruczej! 
+        </p>
+        <p>
+          <span class="xoxo"> xoxo </span> <br>
+          Tosia & Tytus
+        </p>
+            
       </section>
 
       <section id="plan" class="section">
         <h1>Plan dnia</h1>
-        <p>TBD</p>
+        <p>Ceremonia cywilna rozpocznie się o godzinie 16. </p>
+        <p>
+          Uprzejmie prosimy o przybycie chwilę wcześniej - zapraszamy od godziny 15:30 (uważajcie, dojechanie do Boruczej bywa nieoczywiste) :) 
+        </p>
+
       </section>
 
       <section id="transportation" class="section">
-        <h1>Transport</h1>
-        <p> TBD </p>
+        <h1>Adres & Transport</h1>
+        <p> 
+          Ślub i przyjęcie odbędą się w Stodole Boruczej. 
+         </p>
+
+         <p> <!-- TODO: przesunąć adres na prawo. -->
+          <h2>Adres</h2>
+          Stodoła Borucza <br>
+          Ul. Borucza 43 <br>
+          Borucza 
+         </p>
+
+        <!-- 
+        TODO: 
+        1. we should minimize the map, to be able to see both borsucza and warsaw 
+        2. make it look reasonable on mobile
+        -->
+         <iframe
+         width="600"
+         height="450"
+         style="border:0"
+         loading="lazy"
+         allowfullscreen
+         referrerpolicy="no-referrer-when-downgrade"
+         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAysfsuybiSPqhvheGiMu6dolp_UAQCT90
+           &q=place_id:ChIJEZbZuLYhH0cRLCAZfM0kXqU">
+       </iframe>
+
+  <p>
+  Jeżeli bylibyście zainteresowani transportem z i do Warszawy, dajcie znać w ankiecie lub bezpośrednio do nas. 
+  </p>
+
       </section>
 
       <section id="gifts" class="section">
         <h1>Prezenty</h1>
-        <p>TBD</p>
+        <p>
+          Wasza obecność to dla nas najlepszy prezent!
+        </p>
+        <p>
+          Jeżeli chcielibyście sprawić nam dodatkowy prezent, docenimy wsparcie naszej podróży poślubnej.
+          W przypadku kiedy chcielibyście dać nam fizyczny prezent, prosimy o wcześniejszy kontakt z nami.
+        </p>
       </section>
 
       <section id="food" class="section">
         <h1>Jedzenie</h1>
-        <p> TBD</p>
+        <p>
+        Oprócz standardowego menu, proponujemy również opcję vege lub vegan. Postaramy się uwzględnić również inne preferencje żywieniowe (dieta bezglutenowa, bezrybna itp.). 
+      </p>
+      <p>
+      Dajcie proszę znać jakie są Wasze preferencje jedzeniowe w ankiecie (lub bezpośrednio do nas). Jeżeli nie wskażecie swoich preferencji, założymy że chcecie standardową wersję menu. 
+      </p>
+      </section>
+
+      <section id="dress", class="section">
+        <h1>Dress code </h1>
+
+        <p>
+          Ładnie, ale swobodnie. Jeżeli szukacie inspiracji, sprawdzi się klimat “garden party”.   
+        </p>
+        <p>
+          Polecamy założyć wygodne buty - Stodoła Borucza położona jest w lesie i mamy nadzieję, że większość dnia spędzimy na dworze. Pamiętajcie również o ochronie od słońca. 
+        </p>
       </section>
 
       <section id="accommodation" class="section">
         <h1>Spanie</h1>
-        <p>TBD</p>
+        <p>
+          Jeżeli bylibyście zainteresowani spaniem w okolicach Boruczej lub w Warszawie, dajcie znać w ankiecie lub bezpośrednio do nas. 
+        </p>
+      </section>
+
+      <section id="rsvp" class="section">
+        <h1>RSVP & Ankieta</h1>
+
+        <p>
+          Prosimy o potwierdzenie obecności do 1 maja 2025 r. Kontakt do nas znajdziecie na zaproszeniu :) 
+        </p>
+        <p>
+          Prosimy również o wypełnienie ankiety z Waszymi preferencjami co do transportu, noclegu oraz jedzenia. 
+        </p>
+
+        <p>
+          <a href="https://forms.gle/BC7YyxfG1AW554pq7">Ankieta</a>
+        </p>
+      <p>
+        Prosimy o wypełnienie ankiety lub zgłoszenie Waszych preferencji bezpośrednio do nas do 1 maja — w przeciwnym razie możemy nie być w stanie ich uwzględnić. 
+      </p>
       </section>
       
       <div id="drzewka">
@@ -97,10 +183,6 @@
         const touchEndX = e.changedTouches[0].clientX;
         const swipeDistance = touchEndX - touchStartX;
   
-        // Swipe right to open sidebar (if closed)
-        if (swipeDistance > 50 && !sidebar.classList.contains('open')) {
-          sidebar.classList.add('open');
-        }
         // Swipe left to close sidebar (if open)
         if (swipeDistance < -50 && sidebar.classList.contains('open')) {
           sidebar.classList.remove('open');
