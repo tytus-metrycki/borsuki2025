@@ -132,6 +132,14 @@ ul li {
     display: none; /* Hidden by default */
 }
   
+.mapContainer {
+    max-width: 600px;
+    max-height: 450px;
+}
+.mapContainer iframe {
+    width: 100%;
+    aspect-ratio: 4/3;
+}
 
 /* Sidebar Styles for Mobile */
 @media screen and (max-width: 768px) {
