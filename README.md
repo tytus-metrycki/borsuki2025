@@ -1,8 +1,10 @@
-# Welcome to your CDK TypeScript project
+# Borsuki 2025
 
-This is a blank project for CDK development with TypeScript.
+A wedding website.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+A simple example of an AWS setup for hosting a static webpage. The infra is defined via CDK and uses S3 for hosting, CloudFront as a CDN, Route 53 for DNS, and an ACM certificate for TLS.
+
+For a small site with low traffic, costs are mainly domain registration and DNS hosting (as of 2026: [US$0.50/month per Route 53 hosted zone](https://aws.amazon.com/route53/pricing/) plus yearly domain registration).
 
 ## Useful commands
 
